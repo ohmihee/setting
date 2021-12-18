@@ -1,0 +1,37 @@
+{
+  "name": "kyungli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingoo-code/kyungli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ingoo-code/kyungli/issues"
+  },
+  "homepage": "https://github.com/ingoo-code/kyungli#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "nunjucks": "^3.2.3",
+    "passport": "^0.4.1",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
+  }
+}

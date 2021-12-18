@@ -1,0 +1,74 @@
+<form method="post" action="/user/join" id="register_join" class="register_frm">
+    <table>
+        <tr>
+            <th>아이디</th>
+            <td><input type="text" name="userId" id="userId" class="register_input" placeholder="아이디를 입력해주세요."></td>
+        </tr>
+        <tr>
+            <th>패스워드</th>
+            <td><input type="text" name="userPw" id="userPw" class="register_input" placeholder="패스워드를 입력해주세요."></td>
+        </tr>
+        <tr>
+            <th>패스워드 확인</th>
+            <td><input type="text" name="userPw_chk" id="userPw_chk" class="register_input" placeholder="패스워드를 다시 입력해주세요."></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="userName" id="userName" class="register_input" placeholder="이름을 입력해주세요."></td>
+        </tr>
+        <tr>
+            <th>나이</th>
+            <td><input type="text" name="userAge" id="userAge" class="register_input" placeholder="나이을 입력해주세요."></td>
+        </tr>
+        <tr>
+            <th>성별</th>
+            <td>
+                <input type="radio" name="userGender" value="남자" checked><label for="userGender">남자</label>
+                <input type="radio" name="userGender" value="여자" checked><label for="userGender">여자</label>
+            </td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td>
+                <input type="text" name="userAddress" id="userAddress" class="register_input" placeholder="주소를 입력해주세요.">
+            </td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td>
+                <input type="text" name="userTel" id="userTel" class="register_input" placeholder="전화번호를 입력해주세요.">
+            </td>
+        </tr>
+        <tr>
+            <th>핸드폰</th>
+            <td>
+                <input type="text" name="userPhone" id="userPhone" class="register_input" placeholder="핸드폰번호를 입력해주세요.">
+            </td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>
+                <input type="text" name="userEmail" id="userEamil" class="register_input" placeholder="이메일를 입력해주세요.">
+            </td>
+        </tr>
+    </table>
+    <div id="btn_area">
+        <button class="blue_btn">회원가입</button>
+    </div>
+</form>
+<!-- validation 깔끔하게 처리하기  -->
+<script type="text/javascript">
+    const frm = documnet.querySelector('#register_join');
+    const frmInput = document.querySelectorAll('#register_join input[type="text"]');
+    function validation_join(){
+        let flag = true;
+        frmInput.forEach(ele=>{
+            console.log(ele);
+        })
+
+        if(flag)
+            frm.submit();
+        else
+            return false;
+    }
+</script>

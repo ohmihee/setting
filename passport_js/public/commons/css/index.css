@@ -1,0 +1,145 @@
+/* Style sheet */
+*{
+    margin:0;
+    padding:0;
+}
+
+img{ display:block; line-height:0; }
+ul,li{list-style:none;}
+a{ text-decoration:none; color:#333; }
+
+#wrap{
+    width:100%;
+    height:100%;
+}
+
+#header_wrap{ width:100%; }
+#header{ 
+    box-sizing: border-box;
+    padding:20px 23px;
+    width:1200px; height:72px; margin:0 auto; display:flex; 
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+#header > #logo{
+    font-size:20px;
+}
+
+#header > #main_menu > ul > li {
+    font-size:12px;
+    padding-left:30px;
+    margin-top:8px;
+    float:left;
+    width:auto;
+}
+
+#header > #main_menu > ul > li > ul {
+    display:none;
+}
+
+#main_visual{
+    width:100vw;
+    /*height:100vh;*/
+    height:577px;
+    background:#efefef;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.row{
+    width:100%;
+}
+
+.w1200{
+    width:1180px;
+    margin: 0 auto;
+}
+
+#main_social {
+    height:246px;
+    background:#ddd;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#main_social > ul{
+    display:flex;
+    flex-direction: row;
+}
+
+#main_social > ul > li{
+    padding:0 20px;
+}
+
+#main_distinct{
+    padding:63px 0 100px 0;
+    position:relative;
+}
+
+#main_distinct > .active{
+    height:238px;
+}
+
+#main_distinct > .ltr > .bg{
+    position:absolute;
+    min-width:280px;
+    width:830px;
+    height:156px;
+    /*background-color:#E8344E;*/
+    background:#333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+#main_distinct > .rtr > .bg{
+    position:absolute;
+    right:0px;
+    min-width:280px;
+    width:830px;
+    height:156px;
+    /*background-color:#E8344E;*/
+    background:#ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+/**/
+#main_curri_wrap{
+    margin:64px 0 40px 0;
+}
+
+#main_curri{
+    height:892px;
+    background:#999;
+}
+
+/* carousel */
+#carousel{
+    height:254px;
+    background:#bbb;
+}
+
+/* main_interview */
+#main_interview{
+    background:#f2f2f2;
+    height:1147px;
+}
+
+#footer{
+    height:452px;
+    background:#191a1b;
+    color:#fff;
+}
+
+.mt64{
+    margin-top:64px;
+}

@@ -1,0 +1,156 @@
+amazon ec2
+
+AWS 관리 콘솔
+https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2
+
+- 지역을서울로 변경
+
+
+ES2 툴 선택
+
+이후 운영체제 선택하는 화면에서
+우리는 우분투 를 선택합시다.
+
+이후 6. 보안그룹구성 
+http와
+https를 선택하세요 
+
+ssh 22번 포트는 아이피를 제한적으로 두는게 좋지만 아직은괜찮아요.
+이후 검토및 시작 버튼누름
+새키페어 pem 새로받고 비주얼스튜디오코드에 가져온다
+
+# backend setting ...
+sudo apt-get update
+sudo apt-get install -y build-essetial
+sudo apt-get instlal curl
+curl -sL http://deb.nodesource.com/setup_14.x | sudo -E bash --
+sudo apt-get install -y node.js
+
+확인 방법
+node -v 
+npm -v
+
+webpack build 하기 
+- 정리해야됨
+
+
+CORS 설정
+https://firework-ham.tistory.com/70
+
+
+#말실수
+혹시 말하다가 mariadb보고 mysql이라고 하면 센스있게
+mariadb 라고 치환해서 생각해주세요.
+
+#mariadb 설치
+//sudo apt-get install -y mysql-server
+sudo apt-get install mariadb-server 
+sudo apt-get install mariadb-client
+
+## sudo apt-get install mariadb-client-core10.3
+
+
+#mariadb 설치확인
+mariadb --version
+
+#mariadb 실행하기
+sudo systemctl status mariadb
+
+#my.conf 파일찾기
+
+
+#mysql 설치경로
+/usr/local/mysql/bin
+
+
+# version 설정
+https://downloads.mariadb.org/mariadb/repositories
+sudo vi /etc/apt/sources.list
+
+sudo apt-get install mariadb-server 
+sudo apt-get install mariadb-client
+
+sudo su
+mysql_secure_installation
+
+password 입력후
+only yes
+
+sudo su 상태에서
+mysql 접속후 패스워드를 다시한번 바꿉니다.
+
+//ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'; <- mysql version
+UPDATE user SET password = password('원하는비밀번호') WHERE user = 'root';
+
+
+SELECT user, host, plugin FROM user; // 또한 user 테이블에서 root 사용자의 plugin 값 확인
+
+plugin 값이 mysql_native_password가 아니면 mysql_native_password로 변경해줘야함.
+
+UPDATE user SET plugin='mysql_native_password' WHERE user='root';
+
+FLUSH PRIVILEGES;
+
+
+백그라운드로 실행하기 pm2 설치하기 
+
+npm install pm2
+
+package.json 파일에서 
+아래 코드 삽입
+"start": "pm2 start npm --name 'server.js' "
+
+실행은
+
+sudo npm start 로 서버를 백그라운드 실행을함.
+
+
+
+# front setting ...
+npm build에 대한 설명
+
+node.js 설치
+
+git clone 
+
+sudo apt-get install nginx
+vi /etc/nginx/nginx.conf
+
+nginx 기본셋팅
+sites-available : ::가상 서버 환경들에 대한 설정 파일들이 위치하는 부분입니다. 가상 서버를 사용하거나 사용하지 않던간에 그에 대한 설정 파일들이 위치하는 곳이다.
+sites-enabled : sites-available 에 있는 가상 서버 파일들중에서 실행시키고 싶은 파일을 symlink로 연결한 폴더입니다. 실제로 이 폴더에 위치한 가상서버 환경 파일들을 읽어서 서버를 세팅합니다.
+nginx.conf : Nginx에 관한 설정파일로 Nginx 설정에 관한 블록들이 작성되어 있으며 이 파일에서 sites-enabled 폴더에 있는 파일들을 가져옵니다.
+
+                    기존내용                         변경내용 
+sudo cp -r /etc/nginx/sites-available/ /etc/nginx/sites-available-origin
+sudo cp -r /etc/nginx/sites-enabled/ /etc/nginx/sites-enabled-origin
+
+이후  sites-available , sites-enabled 하위폴더인 default 폴더를 제거하자.
+
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+
+//touch 파일 쓰기 
+sudo touch /etc/nginx/sites-available/myapp.conf
+
+아래와같이 설정하자
+server {
+  listen 80;
+  location / {
+    root   /home/ubuntu/webpack5;
+    index  index.html index.htm;
+    try_files $uri /index.html;
+  }
+}
+
+
+방금 생성한 설정파일을 sites-enabled 폴더로 symlink해야 해당서비스가 활성화 되며 실제 서비스가 가능한 상태가 된다. ( 윈도우기준 바로가기 기능)
+
+sudo ln -s /etc/nginx/sites-available/myapp.conf /etc/nginx/sites-enabled/myapp.conf
+sudo nginx -t  하여 구문체크하기
+
+nginx 실행방법
+sudo systemctl stop nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
